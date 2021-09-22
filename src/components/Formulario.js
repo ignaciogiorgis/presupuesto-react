@@ -3,7 +3,7 @@ import Error from './Error'
 import shortid from 'shortid'
 
 
-const Formulario = ({guardarGasto}) => {
+const Formulario = ({guardarGasto, guardarCreacrGasto}) => {
     const [nombre, guardarNombre] = useState('');
     const [cantidad, guardarCantidad] = useState(0);
 
@@ -28,6 +28,7 @@ const Formulario = ({guardarGasto}) => {
        
         //pasar el gasto al componente principal
        guardarGasto(gasto);
+       guardarCreacrGasto(true);
 
 
 

@@ -14,14 +14,22 @@ function App() {
   const [gasto, guardarGasto] = useState([{
 
   }]);
+  const [crearGasto, guardarCreacrGasto] = useState(false)
 
   //useEffect que actualiza el restante
 
   useEffect(()=>{
-    guardarGastos(
-      [...gastos, gasto]
-    )
-  }, [gasto]);
+    if(crearGasto){
+      guardarGastos(
+        [...gastos, gasto]
+      )
+
+      const presupuestoRestante = restante - gasto.cantidad;
+      guardarRestante(presupuestoRestante);
+
+      guardarCreacrGasto(false)
+    }
+  }, [gasto, crearGasto, gastos, restante]);
 
   //cuando agregamos un nuevo gasto
 
@@ -42,6 +50,7 @@ function App() {
                       <div className="one-half column">
                         <Formulario
                           guardarGasto={guardarGasto}
+                          guardarCreacrGasto={guardarCreacrGasto}
                         />
                       </div>
                       <div className="one-half column">
